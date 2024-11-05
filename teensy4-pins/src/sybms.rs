@@ -29,7 +29,11 @@
 //! |  54  | GPIO_EMC_29   | SEMC_CS0        | FLEXPWM3_PWMA00 | LPUART6_RTS_B | LPSPI1_SDI           | FLEXIO1_FLEXIO15 | GPIO4_IO29 | ---             | ---       | FLEXSPI2_A_DATA03     | ---              |
 
 pub use crate::common::*;
-use crate::iomuxc::{gpio_ad_b1::*, gpio_b1::*, gpio_emc::*, gpio_sd_b0::*, ErasedPad};
+
+#[allow(unused_imports)]
+use crate::iomuxc::{
+    gpio_ad_b0::*, gpio_ad_b1::*, gpio_b0::*, gpio_b1::*, gpio_emc::*, gpio_sd_b0::*, ErasedPad,
+};
 
 /// Pin 34 (4.1)
 pub type P34 = GPIO_B1_13;
