@@ -8,6 +8,7 @@
 //!
 //! Create board resources depending on your board:
 //!
+//! - Scythe BMS should use [`sybms`].
 //! - Teensy 4.0 boards should use [`t40`].
 //! - Teensy 4.1 boards should use [`t41`].
 //! - Teensy MicroMod boards should use [`tmm`].
@@ -180,6 +181,10 @@ pub fn instances() -> Instances {
 
 pub use crate::clock_power::*;
 
+/// Resources for a Scythe BMS.
+///
+/// Use [`sybms`] to construct this. The pins are specific to the Scythe BMS.
+pub type SybmsResources = Resources<pins::sybms::Pins>;
 /// Resources for a Teensy 4.0.
 ///
 /// Use [`t40`] to construct this. The pins are specific to the Teensy 4.0.
@@ -628,6 +633,14 @@ fn prepare_resources<Pins>(
         trng,
         tempmon,
     }
+}
+
+/// Create resources for the Scythe BMS board.
+///
+/// Note that the peripheral instances acquired by RTIC -- named `device` in the
+/// `init::Context` object -- can be used as the argument to this function.
+pub fn sybms(instances: impl Into<Instances>) -> SybmsResources {
+    prepare_resources(instances.into(), pins::sybms::from_pads)
 }
 
 /// Create resources for the Teensy 4.0 board.
