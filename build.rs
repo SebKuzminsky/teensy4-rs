@@ -16,7 +16,7 @@ fn main() {
         .stack_size(16 * 1024)
         .stack_size_env_override("TEENSY4_STACK_SIZE")
         .vectors(Memory::Dtcm)
-        .text(Memory::Flash)
+        .text(Memory::Itcm)
         .data(Memory::Dtcm)
         .bss(Memory::Dtcm)
         .uninit(Memory::Ocram)
