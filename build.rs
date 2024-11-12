@@ -2,7 +2,8 @@
 fn main() {
     use imxrt_rt::{Family, FlexRamBanks, Memory, RuntimeBuilder};
 
-    RuntimeBuilder::from_flexspi(Family::Imxrt1060, 1984 * 1024)
+    const FLASH_SIZE_BYTES: usize = 256 / 8 * 1024 * 1024;
+    RuntimeBuilder::from_flexspi(Family::Imxrt1060, FLASH_SIZE_BYTES)
         .flexram_banks(FlexRamBanks {
             ocram: 0,
             itcm: 6,
