@@ -202,6 +202,9 @@ pub struct Pins {
     pub p53: P53,
     /// Pin 54
     pub p54: P54,
+
+    pub ad_b0_14: crate::iomuxc::gpio_ad_b0::GPIO_AD_B0_14,
+    pub ad_b0_15: crate::iomuxc::gpio_ad_b0::GPIO_AD_B0_15,
 }
 
 /// Constrain the processor pads to the board pins
@@ -264,6 +267,8 @@ pub const fn from_pads(iomuxc: crate::iomuxc::Pads) -> Pins {
         p52: iomuxc.gpio_emc.p26,
         p53: iomuxc.gpio_emc.p25,
         p54: iomuxc.gpio_emc.p29,
+        ad_b0_14: iomuxc.gpio_ad_b0.p14,
+        ad_b0_15: iomuxc.gpio_ad_b0.p15,
     }
 }
 
