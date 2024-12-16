@@ -35,6 +35,9 @@ use crate::iomuxc::{
     gpio_ad_b0::*, gpio_ad_b1::*, gpio_b0::*, gpio_b1::*, gpio_emc::*, gpio_sd_b0::*, ErasedPad,
 };
 
+#[allow(unused_imports)]
+pub use crate::iomuxc::{gpio_ad_b0, gpio_ad_b1, gpio_b0, gpio_b1, gpio_emc, gpio_sd_b0};
+
 /// Pin 34 (4.1)
 pub type P34 = GPIO_B1_13;
 /// Pin 35 (4.1)
@@ -84,7 +87,7 @@ pub type P54 = GPIO_EMC_29;
 /// `erased_pins[13]`.
 ///
 /// Use [`Pins::erase`](Pins::erase()) to erase pin types.
-pub type ErasedPins = [ErasedPad; 55];
+pub type ErasedPins = [ErasedPad; 56];
 
 /// Pins
 ///
@@ -202,9 +205,9 @@ pub struct Pins {
     pub p53: P53,
     /// Pin 54
     pub p54: P54,
-
     pub ad_b0_14: crate::iomuxc::gpio_ad_b0::GPIO_AD_B0_14,
     pub ad_b0_15: crate::iomuxc::gpio_ad_b0::GPIO_AD_B0_15,
+    pub emc_09: gpio_emc::GPIO_EMC_09,
 }
 
 /// Constrain the processor pads to the board pins
@@ -269,6 +272,7 @@ pub const fn from_pads(iomuxc: crate::iomuxc::Pads) -> Pins {
         p54: iomuxc.gpio_emc.p29,
         ad_b0_14: iomuxc.gpio_ad_b0.p14,
         ad_b0_15: iomuxc.gpio_ad_b0.p15,
+        emc_09: iomuxc.gpio_emc.p09,
     }
 }
 
@@ -349,6 +353,7 @@ impl Pins {
             self.p52.erase(),
             self.p53.erase(),
             self.p54.erase(),
+            self.emc_09.erase(),
         ]
     }
 }
